@@ -1,39 +1,42 @@
 #include <iostream>
 
+
 using namespace std;
 
 int main() {
 
 	system("chcp 1251 > nul");
 
+	int n, a, b,col, max_start,max_end;
 
-	long long n,m,a,col=0,col2=0;
-
-	cout << "Enter the area length - ";
+	cout << "Enter the quantity in the queue - ";
 	cin >> n;
-	cout << endl << "Enter the width of the square - ";
-	cin >> m;
-	cout << endl << "Enter the tile width - " ;
+	cout << "How many people are there at least in front of you - ";
 	cin >> a;
+	cout << "How many people are there at most after you - ";
+	cin >> b;
 
-	if (a < 1 || a > pow(10,9) || m < 1 || m > pow(10, 9) || n < 1 || n > pow(10, 9)) {
+	if (a < 0 || b >= n || n > 100 ) {
 		cout << "Incorrect input data!" << endl;
-		
+
 		return main();
 	}
 
-	while (n > 0) {
-		n = n - a;
-		++col;
+	cout << "Possible places in the queue: ";
 
-	} 
-	while (m > 0) {
-		m = m - a;
-		++col2;
-
-	}
+	max_start = n - a;
+	max_end = b + 1;
 	
-		col = (col * col2);
-	cout << endl <<"Number of tiles - " << col;
+	if (max_start < max_end) {
+		col = max_start;
+	}
+	else {
+		col = max_end;
+	}
+
+	cout << col;
+
 	return 0;
 }
+
+
